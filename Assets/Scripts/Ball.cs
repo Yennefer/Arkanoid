@@ -7,9 +7,11 @@ public class Ball : MonoBehaviour {
 	public float bounceForce = 400F;
 
 	private Rigidbody2D rb2d;
+	private AudioSource bollBounceSound;
 
 	private void Awake () {
 		rb2d = GetComponent<Rigidbody2D> ();
+		bollBounceSound = GetComponent<AudioSource> ();
 	}
 
 	private void Start () {
@@ -31,5 +33,9 @@ public class Ball : MonoBehaviour {
 		if (other.gameObject.tag.Equals ("Floor")) {
 			gameObject.SetActive (false);
 		}
+	}
+
+	private void OnCollisionEnter2D (Collision2D coll) {
+		bollBounceSound.Play ();
 	}
 }
