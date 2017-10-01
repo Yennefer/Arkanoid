@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour {
 
-	public float bounceForce = 400F;
+	public float bounceForce = 100F;
 
 	private Rigidbody2D rb2d;
 
@@ -13,17 +13,7 @@ public class Ball : MonoBehaviour {
 	}
 
 	private void Start () {
-		// Creating random vector for the ball
-		float xRangeMin = bounceForce / 4;
-		float xRangeMax = bounceForce / 4 * 3;
-		float bounceForceX = Random.Range(xRangeMin, bounceForce);
-		if (bounceForceX > xRangeMax) {
-			bounceForceX = xRangeMin - bounceForceX;
-		}
-		// Y should always be positive - ball should always fly up
-		float bounceForceY = bounceForce - Mathf.Abs(bounceForceX);
-
-		Vector2 movement = new Vector2 (bounceForceX, bounceForceY);
+		Vector2 movement = new Vector2 (bounceForce + 100, bounceForce);
 		rb2d.AddForce (movement);
 	}
 
